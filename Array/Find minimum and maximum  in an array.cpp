@@ -10,11 +10,8 @@ public:
         }
          if(a[i]<min){
             min=a[i];
-        }
-       
-        
+        }   
     }
-     
     return {min,max}; 
     }
 };
