@@ -31,7 +31,7 @@ void insert_at_beg(Node *&head,int data){
 void insert_at_end(Node *&tail,int data){
      Node *temp = new Node(data);
      tail->next=temp;
-     temp=tail;
+     tail=temp;
 }
 int main() {
     // Write C++ code here
