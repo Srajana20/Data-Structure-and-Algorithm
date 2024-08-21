@@ -10,39 +10,36 @@ class queue{
     
     void enqueue(int data){
         int size=sizeof(q)/sizeof(q[0]);
-        if(size-1==rear){
+        if(size==rear){
             cout<<"Queue is full"<<endl;
         }
         else{
-            if(rear==-1 && front==-1){
-                front++;
-                rear++;
-            }
-            else{
-                 rear++;
-            }
+            
             q[rear]=data;
             cout<<"Enqueued : "<<q[rear]<<endl;
+            rear++;
            
         }
     }
     
     void dequeue(){
-        if(rear == -1){
+        if(rear == front){
             cout<<"Queue is empty"<<endl;
         }
         else{
             cout<<"Element : "<<q[front]<<" is dequeued"<<endl;
-            for(int i=0;i<rear;i++){
-                q[i]=q[i+1];
+            q[front]=-1;
+            front++;
+            if(front==rear){
+                front=0;
+                rear=0;
             }
-            rear--;
         }
     }
 };
 
-int queue::front=-1;
-int queue::rear=-1;
+int queue::front=0;
+int queue::rear=0;
 
 int main() {
     queue q1;
@@ -55,7 +52,13 @@ int main() {
     q1.dequeue();
     q1.dequeue();
     q1.dequeue();
+    q1.enqueue(10);
+    q1.enqueue(20);
+    q1.enqueue(30);
+    q1.enqueue(40);
+    
     q1.dequeue();
     q1.dequeue();
+    cout<<q1.q[q1.front]<<endl;
     return 0;
 }
